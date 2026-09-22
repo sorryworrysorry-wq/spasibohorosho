@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бот-помощник | Демо</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  (function() {
+    const saved = localStorage.getItem("theme") || "dark";
+    document.documentElement.setAttribute("data-theme", saved);
+  })();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">🤖 Бот-помощник</div>
+  <div class="topbar-right">
+    <nav>
+      <a href="index.html" class="active">Чат</a>
+      <a href="admin.html">Админ</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="Сменить тему">
+      <span class="icon sun">☀️</span>
+      <span class="icon moon hidden">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="sidebar">
+    <h3>📋 Меню</h3>
+    <button class="menu-btn" data-action="informatics">💻 Информатика</button>
+    <button class="menu-btn" data-action="equation">🧮 Решить уравнение</button>
+    <button class="menu-btn" data-action="russian">📚 Русский язык</button>
+    <button class="menu-btn" data-action="olympiads">📝 Олимпиады</button>
+    <button class="menu-btn" data-action="dz">📚 ЦДЗ</button>
+    <button class="menu-btn" data-action="konspekty">📖 Конспекты</button>
+    <button class="menu-btn" data-action="otv">✏️ Ответы</button>
+    <button class="menu-btn" data-action="vpn">🔐 VPN</button>
+    <button class="menu-btn" data-action="support">💬 Поддержка</button>
+  </div>
+
+  <div class="chat">
+    <div class="chat-header">
+      <span class="dot"></span> Бот онлайн
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Введи сообщение..." autocomplete="off">
+      <button id="sendBtn">➤</button>
+    </div>
+  </div>
+</main>
+
+<script src="crypto.js"></script>
+<script src="script.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
