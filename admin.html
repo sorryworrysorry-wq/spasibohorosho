@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Админ-панель</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  (function() {
+    const saved = localStorage.getItem("theme") || "dark";
+    document.documentElement.setAttribute("data-theme", saved);
+  })();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">⚙️ Админ-панель</div>
+  <div class="topbar-right">
+    <nav>
+      <a href="index.html">Чат</a>
+      <a href="admin.html" class="active">Админ</a>
+      <a href="#" id="logoutBtn" style="color:var(--danger)">Выйти</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="Сменить тему">
+      <span class="icon sun">☀️</span>
+      <span class="icon moon hidden">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="container admin-container">
+  <div class="tabs">
+    <button class="tab active" data-tab="vpn">🔐 VPN</button>
+    <button class="tab" data-tab="olymp">📝 Олимпиады</button>
+    <button class="tab" data-tab="dz">📚 ЦДЗ</button>
+    <button class="tab" data-tab="konsp">📖 Конспекты</button>
+    <button class="tab" data-tab="otv">✏️ Ответы</button>
+    <button class="tab" data-tab="subjects">📋 Предметы</button>
+    <button class="tab" data-tab="stepik">💻 Stepik</button>
+    <button class="tab" data-tab="yandex">🟡 Яндекс</button>
+    <button class="tab" data-tab="support">💬 Поддержка</button>
+  </div>
+
+  <section class="tab-content active" id="tab-vpn">
+    <h2>🔐 VPN-ключи</h2>
+    <div class="form-row">
+      <input type="text" id="vpnName" placeholder="Название (опц.)">
+      <input type="text" id="vpnKey" placeholder="Ключ vless://...">
+      <button onclick="addVPN()">Добавить</button>
+    </div>
+    <ul class="list" id="vpnList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-olymp">
+    <h2>📝 Олимпиады</h2>
+    <div class="form-col">
+      <input type="text" id="olympName" placeholder="Название">
+      <textarea id="olympContent" placeholder="Ответы/содержание"></textarea>
+      <button onclick="addOlymp()">Добавить</button>
+    </div>
+    <ul class="list" id="olympList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-dz">
+    <h2>📚 ЦДЗ</h2>
+    <div class="form-col">
+      <input type="text" id="dzSubject" placeholder="Предмет">
+      <input type="text" id="dzTitle" placeholder="Название задания">
+      <textarea id="dzContent" placeholder="Ответы"></textarea>
+      <button onclick="addDZ()">Добавить</button>
+    </div>
+    <ul class="list" id="dzList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-konsp">
+    <h2>📖 Конспекты</h2>
+    <div class="form-col">
+      <input type="text" id="konspSubject" placeholder="Предмет">
+      <input type="text" id="konspTitle" placeholder="Тема">
+      <textarea id="konspContent" placeholder="Текст конспекта"></textarea>
+      <button onclick="addKonsp()">Добавить</button>
+    </div>
+    <ul class="list" id="konspList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-otv">
+    <h2>✏️ Ответы на темы</h2>
+    <div class="form-col">
+      <input type="text" id="otvSubject" placeholder="Предмет">
+      <input type="text" id="otvTopic" placeholder="Тема">
+      <textarea id="otvContent" placeholder="Ответ"></textarea>
+      <button onclick="addOTV()">Добавить</button>
+    </div>
+    <ul class="list" id="otvList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-subjects">
+    <h2>📋 Предметы</h2>
+    <div class="form-row">
+      <input type="text" id="subjectName" placeholder="Название предмета">
+      <button onclick="addSubject()">Добавить</button>
+    </div>
+    <ul class="list" id="subjectList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-stepik">
+    <h2>💻 Данные Stepik</h2>
+    <p style="color:var(--text-muted)">🔒 Данные расшифрованы — доступны только после ввода пароля.</p>
+    <ul class="list" id="stepikList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-yandex">
+    <h2>🟡 Данные Яндекс.Учебник</h2>
+    <p style="color:var(--text-muted)">🔒 Данные расшифрованы — доступны только после ввода пароля.</p>
+    <ul class="list" id="yandexList"></ul>
+  </section>
+
+  <section class="tab-content" id="tab-support">
+    <h2>💬 Сообщения в поддержку</h2>
+    <p style="color:var(--text-muted)">🔒 Данные расшифрованы — доступны только после ввода пароля.</p>
+    <ul class="list" id="supportList"></ul>
+  </section>
+</main>
+
+<script src="crypto.js"></script>
+<script src="auth.js"></script>
+<script src="admin.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
